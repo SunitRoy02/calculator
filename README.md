@@ -4,8 +4,8 @@ A new Flutter application.
 
 # Screenshot 
 
-![](Screenshot/ss1.jpg)
-![](Screenshot/ss2.jpg)
+![](Screenshot/group.png)
+
 
 ## Getting Started
 
