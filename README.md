@@ -4,7 +4,8 @@ A new Flutter application.
 
 # Screenshot 
 
-<img src"Screenshot/ss1.png"/>
+![](Screenshot/ss1.jpg)
+![](Screenshot/ss2.jpg)
 
 ## Getting Started
 
