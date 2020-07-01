@@ -9,6 +9,8 @@ class Calculator extends StatefulWidget {
 
 class _CalculatorState extends State<Calculator> {
   String number = '';
+  bool textSize = true;
+
   bool v = true;
   bool add = false,
       sub = false,
@@ -30,6 +32,13 @@ class _CalculatorState extends State<Calculator> {
 
   String discription = '';
   var finalResult;
+
+  void size() {
+    int lol = number.length;
+    if (lol > 6) {
+      textSize = false;
+    }
+  }
 
   //Button Widget
   Widget button(Color btnColor, String btnString, Color stringColor) {
@@ -73,14 +82,7 @@ class _CalculatorState extends State<Calculator> {
     val2 = "";
     result = '';
     v = true;
-    div = false;
-    sub = false;
-    add = false;
-    mul = false;
-    dot1 = false;
-    dot2 = false;
-    start = false;
-    end = false;
+
     addAction = false;
     subAction = false;
     mulAction = false;
@@ -95,10 +97,15 @@ class _CalculatorState extends State<Calculator> {
     div = true;
     mul = true;
     per = true;
+    dot1 = true;
+    dot2 = true;
+    start = true;
+    end = true;
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Calculator'),
@@ -123,6 +130,7 @@ class _CalculatorState extends State<Calculator> {
                         style: TextStyle(color: Colors.grey, fontSize: 30),
                         textDirection: TextDirection.ltr,
                         textAlign: TextAlign.end,
+
                       ),
                     ),
                   ],
@@ -134,7 +142,9 @@ class _CalculatorState extends State<Calculator> {
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
                         '$number',
-                        style: TextStyle(color: Colors.white, fontSize: 50),
+                        style: textSize ? TextStyle(
+                            color: Colors.white, fontSize: 50)
+                            : TextStyle(color: Colors.white, fontSize: 30),
                         textDirection: TextDirection.ltr,
                       ),
                     ),
@@ -224,8 +234,8 @@ class _CalculatorState extends State<Calculator> {
           number = '$result' + '$val2';
         }
       }
-      debugPrint('$val1,$val2');
-      debugPrint('$number');
+      errorMethod();
+      size();
     });
   }
 
@@ -242,22 +252,22 @@ class _CalculatorState extends State<Calculator> {
       buttonClick('3');
     }
     if (text == '4') {
-     buttonClick('4');
+      buttonClick('4');
     }
     if (text == '5') {
-     buttonClick('5');
+      buttonClick('5');
     }
     if (text == '6') {
-     buttonClick('6');
+      buttonClick('6');
     }
     if (text == '7') {
       buttonClick('7');
     }
     if (text == '8') {
-     buttonClick('8');
+      buttonClick('8');
     }
     if (text == '9') {
-     buttonClick('9');
+      buttonClick('9');
     }
     if (text == '00') {
       setState(() {
@@ -280,6 +290,8 @@ class _CalculatorState extends State<Calculator> {
         }
         debugPrint('$val1,$val2');
         debugPrint('$number');
+        errorMethod();
+        size();
       });
     }
 
@@ -287,8 +299,19 @@ class _CalculatorState extends State<Calculator> {
       setState(() {
         number = '';
         discription = '';
+        textSize = true;
+        div = false;
+        per = false;
+        sub = false;
+        add = false;
+        mul = false;
+        dot1 = false;
+        dot2 = false;
+        start = false;
+        end = false;
         clear();
       });
+      errorMethod();
     }
 
     if (text == '%') {
@@ -305,11 +328,11 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      debugPrint('$v || valu1 :$val1 || number :$number || valu2 :$val2');
+      errorMethod();
     }
     if (text == '/') {
       setState(() {
-        if (div == false) {
+        if (per == false) {
           if (number != '') {
             v = false;
             val1 = '$number';
@@ -321,10 +344,11 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
+      errorMethod();
     }
     if (text == 'x') {
       setState(() {
-        if (mul == false) {
+        if (per == false) {
           if (number != '') {
             v = false;
             val1 = '$number';
@@ -336,10 +360,11 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
+      errorMethod();
     }
     if (text == '-') {
       setState(() {
-        if (sub == false) {
+        if (per == false) {
           if (number != '') {
             v = false;
             val1 = '$number';
@@ -351,10 +376,11 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
+      errorMethod();
     }
     if (text == '+') {
       setState(() {
-        if (add == false) {
+        if (per == false) {
           if (number != '') {
             v = false;
             val1 = '$number';
@@ -366,6 +392,7 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
+      errorMethod();
     }
 
     if (text == '.') {
@@ -384,7 +411,7 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      debugPrint('$v, valu1 :$val1,number :$number,valu2 :$val2');
+      errorMethod();
     }
 
     if (text == '+/-') {
@@ -404,7 +431,7 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      debugPrint('$v, valu1 :$val1,number :$number,valu2 :$val2');
+      errorMethod();
     }
 
     if (text == '=') {
@@ -418,8 +445,8 @@ class _CalculatorState extends State<Calculator> {
           number = '=' + finalResult.toString().trim();
 
           debugPrint('$one,$two');
-
           clear();
+          size();
         }
 
         if (subAction == true) {
@@ -430,6 +457,8 @@ class _CalculatorState extends State<Calculator> {
           number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
           clear();
+          size();
+          errorMethod();
         }
 
         if (mulAction == true) {
@@ -439,7 +468,9 @@ class _CalculatorState extends State<Calculator> {
           discription = '$number';
           number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
+          errorMethod();
           clear();
+          size();
         }
 
         if (divAction == true) {
@@ -450,7 +481,9 @@ class _CalculatorState extends State<Calculator> {
           number = '=' + finalResult.toString().trim();
 
           debugPrint('$one,$two');
+          errorMethod();
           clear();
+          size();
         }
 
         if (perAction == true) {
@@ -460,10 +493,28 @@ class _CalculatorState extends State<Calculator> {
           discription = '$number';
           number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
+          errorMethod();
           clear();
+          size();
         }
       });
     }
-  } // end of action method
+  }
 
+  void errorMethod() {
+    print(
+        '==========================================================================================');
+    debugPrint(
+        'Display_Number = $number||Discription = $discription ||'
+            ' DataInValu1 =$val1|| DataInValu2 =$val2' +
+            '|| Result = $result || Valu = $v || add= $add ||sub = $sub ||mul=$mul ||div=$div ||per =$per||'
+            + 'finalResult =$finalResult' +
+            '--------------------------------------------------------------------------'
+            +
+            '-----------------------------------------------------------------'
+            + '$addAction,$subAction,$mulAction,$divAction,$perAction'
+    );
+    print(
+        '---------------------------------------------------------------------------');
+  } // end of action method
 } // end of class
