@@ -22,8 +22,9 @@ class _CalculatorState extends State<Calculator> {
   bool addAction = false,subAction = false,divAction = false,mulAction = false,perAction = false;
 
   String val1, val2 = '';
-  var result ;
-  String discription= '';
+  var result;
+
+  String discription = '';
   var finalResult;
 
   //Button Widget
@@ -63,7 +64,7 @@ class _CalculatorState extends State<Calculator> {
   } //end
 
   // clear
-  void clear(){
+  void clear() {
     val1 = '';
     val2 = "";
     result = '';
@@ -82,6 +83,7 @@ class _CalculatorState extends State<Calculator> {
     divAction = false;
     perAction = false;
   }
+
   // bool Method
   void boolMethod() {
     add = true;
@@ -105,7 +107,7 @@ class _CalculatorState extends State<Calculator> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Column(
-             mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -121,7 +123,6 @@ class _CalculatorState extends State<Calculator> {
                     ),
                   ],
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
@@ -131,12 +132,10 @@ class _CalculatorState extends State<Calculator> {
                         '$number',
                         style: TextStyle(color: Colors.white, fontSize: 50),
                         textDirection: TextDirection.ltr,
-
                       ),
                     ),
                   ],
                 ),
-
               ],
             ),
             Row(
@@ -202,214 +201,59 @@ class _CalculatorState extends State<Calculator> {
   }
 
   // calculation algo-------------
-
-  action(String text) {
-    if (text == '1') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '1';
-            number = val1;
-          } else {
-            val1 = '$val1' + '1';
-            number = val1;
-          }
+  void buttonClick(String button) {
+    setState(() {
+      if (v == true) {
+        if (number == '') {
+          val1 = '$button';
+          number = val1;
         } else {
-          if (val2 == '') {
-            val2 = '1';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '1';
-            number = '$result' + '$val2';
-          }
+          val1 = '$val1' + '$button';
+          number = val1;
         }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+      } else {
+        if (val2 == '') {
+          val2 = '$button';
+          number = '$number' + '$val2';
+        } else {
+          val2 = '$val2' + '$button';
+          number = '$result' + '$val2';
+        }
+      }
+      debugPrint('$val1,$val2');
+      debugPrint('$number');
+    });
+  }
+
+  //------------
+
+  void action(String text) {
+    if (text == '1') {
+      buttonClick('1');
     }
     if (text == '2') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '2';
-            number = val1;
-          } else {
-            val1 = '$val1' + '2';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '2';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '2';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+      buttonClick('2');
     }
     if (text == '3') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '3';
-            number = val1;
-          } else {
-            val1 = '$val1' + '3';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '3';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '3';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+      buttonClick('3');
     }
     if (text == '4') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '4';
-            number = val1;
-          } else {
-            val1 = '$val1' + '4';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '4';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '4';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+     buttonClick('4');
     }
     if (text == '5') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '5';
-            number = val1;
-          } else {
-            val1 = '$val1' + '5';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '5';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '5';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+     buttonClick('5');
     }
     if (text == '6') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '6';
-            number = val1;
-          } else {
-            val1 = '$val1' + '6';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '6';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '6';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+     buttonClick('6');
     }
     if (text == '7') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '7';
-            number = val1;
-          } else {
-            val1 = '$val1' + '7';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '7';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '7';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+      buttonClick('7');
     }
     if (text == '8') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '8';
-            number = val1;
-          } else {
-            val1 = '$val1' + '8';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '8';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '8';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+     buttonClick('8');
     }
     if (text == '9') {
-      setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '9';
-            number = val1;
-          } else {
-            val1 = '$val1' + '9';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '9';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '9';
-            number = '$result' + '$val2';
-          }
-        }
-        debugPrint('$val1,$val2');
-        debugPrint('$number');
-      });
+     buttonClick('9');
     }
     if (text == '00') {
       setState(() {
@@ -440,7 +284,6 @@ class _CalculatorState extends State<Calculator> {
         number = '';
         discription = '';
         clear();
-
       });
     }
 
@@ -551,7 +394,7 @@ class _CalculatorState extends State<Calculator> {
         } else {
           if (end == false) {
             val2 = '-$val2';
-            var hold  = '$result';
+            var hold = '$result';
             number = '$hold($val2)';
             end = true;
           }
@@ -562,65 +405,59 @@ class _CalculatorState extends State<Calculator> {
 
     if (text == '=') {
       setState(() {
-
-        if(addAction == true){
+        if (addAction == true) {
           double one = double.parse(val1);
           double two = double.parse(val2);
 
-          finalResult = one+two;
+          finalResult = one + two;
           discription = '$number';
-          number = '='+finalResult.toString().trim();
+          number = '=' + finalResult.toString().trim();
 
           debugPrint('$one,$two');
 
           clear();
         }
 
-        if(subAction == true){
+        if (subAction == true) {
           double one = double.parse(val1);
           double two = double.parse(val2);
-          finalResult = one-two;
+          finalResult = one - two;
           discription = '$number';
-          number = '='+finalResult.toString().trim();
+          number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
           clear();
         }
 
-        if(mulAction == true){
+        if (mulAction == true) {
           double one = double.parse(val1);
           double two = double.parse(val2);
-          finalResult = one*two;
+          finalResult = one * two;
           discription = '$number';
-          number = '='+finalResult.toString().trim();
+          number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
           clear();
         }
 
-        if(divAction == true){
+        if (divAction == true) {
           double one = double.parse(val1);
           double two = double.parse(val2);
-          finalResult = one/two;
+          finalResult = one / two;
           discription = '$number';
-          number = '='+finalResult.toString().trim();
+          number = '=' + finalResult.toString().trim();
 
           debugPrint('$one,$two');
           clear();
         }
 
-        if(perAction == true){
+        if (perAction == true) {
           double one = double.parse(val1);
           double two = double.parse(val2);
-          finalResult = one%two;
+          finalResult = one % two;
           discription = '$number';
-          number = '='+finalResult.toString().trim();
+          number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
           clear();
         }
-
-
-
-
-
       });
     }
   } // end of action method
