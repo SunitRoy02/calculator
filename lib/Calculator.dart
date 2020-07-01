@@ -19,7 +19,11 @@ class _CalculatorState extends State<Calculator> {
       end = false,
       dot1 = false,
       dot2 = false;
-  bool addAction = false,subAction = false,divAction = false,mulAction = false,perAction = false;
+  bool addAction = false,
+      subAction = false,
+      divAction = false,
+      mulAction = false,
+      perAction = false;
 
   String val1, val2 = '';
   var result;
