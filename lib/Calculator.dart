@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -105,7 +106,6 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Calculator'),
@@ -125,12 +125,15 @@ class _CalculatorState extends State<Calculator> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Text(
-                        '$discription',
-                        style: TextStyle(color: Colors.grey, fontSize: 30),
-                        textDirection: TextDirection.ltr,
-                        textAlign: TextAlign.end,
-
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.85,
+                        height: 100,
+                        child: AutoSizeText(
+                          '$discription',
+                          textAlign: TextAlign.end,
+                          style: TextStyle(color: Colors.white, fontSize: 60),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ],
@@ -139,13 +142,19 @@ class _CalculatorState extends State<Calculator> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text(
-                        '$number',
-                        style: textSize ? TextStyle(
-                            color: Colors.white, fontSize: 50)
-                            : TextStyle(color: Colors.white, fontSize: 30),
-                        textDirection: TextDirection.ltr,
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: SizedBox(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width * 0.85,
+                        height: 100,
+                        child: AutoSizeText(
+                          '$number',
+                          textAlign: TextAlign.end,
+                          style: TextStyle(color: Colors.white, fontSize: 60),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ],
@@ -271,23 +280,26 @@ class _CalculatorState extends State<Calculator> {
     }
     if (text == '00') {
       setState(() {
-        if (v == true) {
-          if (number == '') {
-            val1 = '';
-            number = val1;
+        if (discription == '') {
+          if (v == true) {
+            if (number == '') {
+              val1 = '';
+              number = val1;
+            } else {
+              val1 = '$val1' + '0';
+              number = val1;
+            }
           } else {
-            val1 = '$val1' + '0';
-            number = val1;
-          }
-        } else {
-          if (val2 == '') {
-            val2 = '0';
-            number = '$number' + '$val2';
-          } else {
-            val2 = '$val2' + '0';
-            number = '$result' + '$val2';
+            if (val2 == '') {
+              val2 = '0';
+              number = '$number' + '$val2';
+            } else {
+              val2 = '$val2' + '0';
+              number = '$result' + '$val2';
+            }
           }
         }
+
         debugPrint('$val1,$val2');
         debugPrint('$number');
         errorMethod();
@@ -504,16 +516,13 @@ class _CalculatorState extends State<Calculator> {
   void errorMethod() {
     print(
         '==========================================================================================');
-    debugPrint(
-        'Display_Number = $number||Discription = $discription ||'
-            ' DataInValu1 =$val1|| DataInValu2 =$val2' +
-            '|| Result = $result || Valu = $v || add= $add ||sub = $sub ||mul=$mul ||div=$div ||per =$per||'
-            + 'finalResult =$finalResult' +
-            '--------------------------------------------------------------------------'
-            +
-            '-----------------------------------------------------------------'
-            + '$addAction,$subAction,$mulAction,$divAction,$perAction'
-    );
+    debugPrint('Display_Number = $number||Discription = $discription ||'
+        ' DataInValu1 =$val1|| DataInValu2 =$val2' +
+        '|| Result = $result || Valu = $v || add= $add ||sub = $sub ||mul=$mul ||div=$div ||per =$per||' +
+        'finalResult =$finalResult' +
+        '--------------------------------------------------------------------------' +
+        '-----------------------------------------------------------------' +
+        '$addAction,$subAction,$mulAction,$divAction,$perAction');
     print(
         '---------------------------------------------------------------------------');
   } // end of action method
