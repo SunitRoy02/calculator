@@ -144,10 +144,7 @@ class _CalculatorState extends State<Calculator> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: SizedBox(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.85,
+                        width: MediaQuery.of(context).size.width * 0.85,
                         height: 100,
                         child: AutoSizeText(
                           '$number',
@@ -503,5 +500,4 @@ class _CalculatorState extends State<Calculator> {
       });
     }
   }
-
 } // end of class
