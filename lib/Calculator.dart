@@ -243,7 +243,7 @@ class _CalculatorState extends State<Calculator> {
           number = '$result' + '$val2';
         }
       }
-      errorMethod();
+
       size();
     });
   }
@@ -302,7 +302,7 @@ class _CalculatorState extends State<Calculator> {
 
         debugPrint('$val1,$val2');
         debugPrint('$number');
-        errorMethod();
+
         size();
       });
     }
@@ -323,7 +323,6 @@ class _CalculatorState extends State<Calculator> {
         end = false;
         clear();
       });
-      errorMethod();
     }
 
     if (text == '%') {
@@ -340,7 +339,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
     if (text == '/') {
       setState(() {
@@ -356,7 +354,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
     if (text == 'x') {
       setState(() {
@@ -372,7 +369,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
     if (text == '-') {
       setState(() {
@@ -388,7 +384,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
     if (text == '+') {
       setState(() {
@@ -404,7 +399,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
 
     if (text == '.') {
@@ -423,7 +417,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
 
     if (text == '+/-') {
@@ -443,7 +436,6 @@ class _CalculatorState extends State<Calculator> {
           }
         }
       });
-      errorMethod();
     }
 
     if (text == '=') {
@@ -470,7 +462,6 @@ class _CalculatorState extends State<Calculator> {
           debugPrint('$one,$two');
           clear();
           size();
-          errorMethod();
         }
 
         if (mulAction == true) {
@@ -480,7 +471,7 @@ class _CalculatorState extends State<Calculator> {
           discription = '$number';
           number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
-          errorMethod();
+
           clear();
           size();
         }
@@ -493,7 +484,7 @@ class _CalculatorState extends State<Calculator> {
           number = '=' + finalResult.toString().trim();
 
           debugPrint('$one,$two');
-          errorMethod();
+
           clear();
           size();
         }
@@ -505,7 +496,7 @@ class _CalculatorState extends State<Calculator> {
           discription = '$number';
           number = '=' + finalResult.toString().trim();
           debugPrint('$one,$two');
-          errorMethod();
+
           clear();
           size();
         }
@@ -513,17 +504,4 @@ class _CalculatorState extends State<Calculator> {
     }
   }
 
-  void errorMethod() {
-    print(
-        '==========================================================================================');
-    debugPrint('Display_Number = $number||Discription = $discription ||'
-        ' DataInValu1 =$val1|| DataInValu2 =$val2' +
-        '|| Result = $result || Valu = $v || add= $add ||sub = $sub ||mul=$mul ||div=$div ||per =$per||' +
-        'finalResult =$finalResult' +
-        '--------------------------------------------------------------------------' +
-        '-----------------------------------------------------------------' +
-        '$addAction,$subAction,$mulAction,$divAction,$perAction');
-    print(
-        '---------------------------------------------------------------------------');
-  } // end of action method
 } // end of class
